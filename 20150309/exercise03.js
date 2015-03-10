@@ -1,9 +1,9 @@
 // write a script containing the function fibonacci(i) that returns the i-th element of the Fibonacci's serie (apply memoization pattern)
-function fibonacci(n) {
+function fibonacci(i) {
 	fibonacci[0] = 0;
 	fibonacci[1] = 1;
-	if(!(n in fibonacci)) {
-		fibonacci[n] = fibonacci(n-1) + fibonacci(n-2);
+	if(!(i in fibonacci)) {
+		fibonacci[i] = fibonacci(i-1) + fibonacci(i-2);
 	}
-	return fibonacci[n];
+	return fibonacci[i];
 }
