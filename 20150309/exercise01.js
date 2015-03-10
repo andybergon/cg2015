@@ -1,5 +1,4 @@
-try to understand what happens in here:
-
+// try to understand what happens in here:
 function greets () {
  console.log('Hello!');
  greets = function () {
@@ -9,11 +8,13 @@ function greets () {
  return greets;
 }
 
-greets();
+greets(); // "Hello" -> function ()
 
-greets()();
+greets()(); // "Bye" -> "Bye" -> function ()
 
-greets()()();
+greets()()(); // "Bye" -> "Bye" -> "Bye" -> function ()
+
+
 function greets () {
  console.log('Hello!');
  var greets = function () {
@@ -23,8 +24,8 @@ function greets () {
  return greets;
 }
 
-greets();
+greets(); // "Hello" -> function ()
 
-greets()();
+greets()(); // "Hello" -> "Bye" -> function ()
 
-greets()()();
+greets()()(); // "Hello" -> "Bye" -> "Bye" -> function ()
