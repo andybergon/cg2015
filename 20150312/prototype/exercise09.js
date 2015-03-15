@@ -1,20 +1,14 @@
 (function() {
-	// exercise08
-	// write a constructor function Point2D that create a 2D point given its x and y coordinates.
 	function Point2D(x,y) {
 		this.x = x;
 		this.y = y;
 	}
 
-	// exercise08a
-	// write a contructor function Edge that create an edge given its two vertices (i.e. two points).
 	function Edge(vertex1,vertex2) {
 		this.vertex1 = vertex1;
 		this.vertex2 = vertex2;
 	}
 
-	// exercise08b
-	// write a method length for Edge that compute the length of the edge.
 	Edge.prototype.length = function() {
 		var x_length = Math.abs(this.vertex2.x - this.vertex1.x),
 			y_length = Math.abs(this.vertex2.y - this.vertex1.y),
@@ -23,6 +17,35 @@
 		return length;
 	};
 
-	var edge = new Edge(new Point2D(1,1), new Point2D(2,3));
-	console.log(edge.length());
-});
+	// exercise09
+	// write a constructor function Trinagle that create a triangle given its three edges.
+	function Triangle(edge1, edge2, edge3) {
+		this.edge1 = edge1;
+		this.edge2 = edge2;
+		this.edge3 = edge3;
+	}
+
+	// exercise09a
+	// write a method perimeter for Triangle that compute the perimeter of the triangle.
+	Triangle.prototype.perimeter = function() {
+		return this.edge1.length() + this.edge2.length() + this.edge3.length();
+	};
+
+	// exercise09b
+	// write a method area for Triangle that compute the area of the triangle (Do you remeber the Erone's formula?).
+	Triangle.prototype.area = function() {
+		var a = this.edge1.length(),
+			b = this.edge2.length(),
+			c = this.edge3.length(),
+			p = (a + b + c) / 2;
+		return Math.sqrt(p*(p-a)*(p-b)*(p-c));
+	};
+
+	// TESTS
+	var edge1 = new Edge(new Point2D(1,1), new Point2D(3,1));
+	var edge2 = new Edge(new Point2D(1,1), new Point2D(1,4));
+	var edge3 = new Edge(new Point2D(3,1), new Point2D(1,4));
+	var triangle = new Triangle(edge1, edge2, edge3);
+	console.log("Perimetro: " + triangle.perimeter());
+	console.log("Area: " + triangle.area());
+})();
