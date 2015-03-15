@@ -25,4 +25,4 @@
 
 	var edge = new Edge(new Point2D(1,1), new Point2D(2,3));
 	console.log(edge.length());
-})();
+});
