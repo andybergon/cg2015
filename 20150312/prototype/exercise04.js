@@ -1,11 +1,11 @@
 (function () {
 	var person = {
 		money : 10000,
-		// car : [],
+		cars : [],
 		buy : function(car) {
 			// non ho visibilità di money, come faccio?
-			// money -= car.price;
-			// car.push(car);
+			this.money -= car.price;
+			this.cars.push(car);
 			console.log("I'm rich");
 		}
 	};
@@ -29,10 +29,10 @@
 (function () {
 	// non chiedeva di farlo con OOP e prototype
 	var employees = [ 
-							{hello : function() {console.log("I work at IBM");}},
-							{hello : function() {console.log("I work at IBM");}},
-							{hello : function() {console.log("I work at IBM");}} 
-						] ; // fill code here;
+						{hello : function() {console.log("I work at IBM");}},
+						{hello : function() {console.log("I work at IBM");}},
+						{hello : function() {console.log("I work at IBM");}} 
+					] ; // fill code here;
 
 	for (var i=0; i < employees.length; ++i ) {
 		// print I work at IBM
