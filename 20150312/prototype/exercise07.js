@@ -1,33 +1,72 @@
 (function () {
-  // Code goes here
+	// Code goes here
+	function PhotoAlbum() {
+		this.pictures = [];
+	}
 
-  var album = PhotoAlbum();
-  var p;
+	PhotoAlbum.prototype.addPicture = function(album) {
+		this.pictures.push(album);
+	};
 
-  p = Photo("Paris Trip 1");
-  p.tag("Jimmy");
-  p.tag("Jane");
-  p.tag("Jeff");
+	PhotoAlbum.prototype.showPictures = function(name) {
+		var s = "";
+		for (var i in this.pictures) {
+			for (var j in this.pictures[i].tags) {
+				if (this.pictures[i].tags[j] === name) {
+					s += this.pictures[i].name + ", ";
+				}
+			}
+		}
+		s = s.slice(0,-2);
+		console.log(s);
+	};
 
-  album.addPicture(p);
+	function Photo(name) {
+		this.name = name;
+		this.tags = [];
+	}
 
-  p = Photo("Look the Eiffel");
-  p.tag("Jimmy");
-  p.tag("Max");
-  album.addPicture(p);
+	Photo.prototype.tag = function(name) {
+		this.tags.push(name);
+	};
 
-  p = Photo("OMG it's so high");
-  p.tag("Jimmy");
-  p.tag("Jane");
+	Photo.prototype.showTags = function() {
+		var s = "";
+		for (var i in this.tags) {
+			s += (this.tags[i] + ", ");
+		}
+		s = s.slice(0, -2);
+		console.log(s);
+	};
 
-  // prints "Jimmy, Jane"
-  p.showTags();
 
-  album.addPicture(p);
+	var album = new PhotoAlbum();
+	var p;
 
-  // prints "Paris Trip 1, Look the Eiffel, OMG it's so high"
-  album.showPictures("Jimmy");
+	p = new Photo("paris Trip 1");
+	p.tag("Jimmy");
+	p.tag("Jane");
+	p.tag("Jeff");
 
-  // prints "Paris Trip 1, OMG it's so high"
-  album.showPictures("Jane");    
+	album.addPicture(p);
+
+	p = new Photo("Look the Eiffel");
+	p.tag("Jimmy");
+	p.tag("Max");
+	album.addPicture(p);
+
+	p = new Photo("OMG it's so high");
+	p.tag("Jimmy");
+	p.tag("Jane");
+
+	// prints "Jimmy, Jane"
+	p.showTags();
+
+	album.addPicture(p);
+
+	// prints "paris Trip 1, Look the Eiffel, OMG it's so high"
+	album.showPictures("Jimmy");
+
+	// prints "paris Trip 1, OMG it's so high"
+	album.showPictures("Jane");
 }());
