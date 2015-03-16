@@ -3,7 +3,6 @@
 		money : 10000,
 		cars : [],
 		buy : function(car) {
-			// non ho visibilità di money, come faccio?
 			this.money -= car.price;
 			this.cars.push(car);
 			console.log("I'm rich");
